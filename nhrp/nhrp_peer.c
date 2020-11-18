@@ -828,7 +828,7 @@ static void nhrp_peer_send_protocol_purge(struct nhrp_peer *peer)
 
 	*cie = (struct nhrp_cie) {
 		.hdr.code = NHRP_CODE_SUCCESS,
-		.hdr.mtu = 0,
+		.hdr.mtu = htons(9216),
 		.hdr.preference = 0,
 		.hdr.prefix_length = 0xff,
 	};
@@ -1336,7 +1336,7 @@ static void nhrp_peer_send_resolve(struct nhrp_peer *peer)
         *cie = (struct nhrp_cie) {
 		.hdr.code = NHRP_CODE_SUCCESS,
 		.hdr.prefix_length = 0,
-		.hdr.mtu = 0,
+		.hdr.mtu = htons(9216),
 		.hdr.holding_time = htons(peer->interface->holding_time),
 	};
 
